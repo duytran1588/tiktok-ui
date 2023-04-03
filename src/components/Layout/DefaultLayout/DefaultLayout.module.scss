@@ -5,9 +5,10 @@
 }
 .container {
   display: flex;
-  width: var(--default-layout-width);
+  width: 100%;
+  max-width: var(--default-layout-width);
 }
 
 .content {
-  flex: 1;
+  flex-basis: calc(1150px - 356px);
 }
