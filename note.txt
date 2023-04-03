@@ -1,0 +1,16 @@
+- Phân tích tông quan Layout chính trước
+  + Phân tích thiết kế của trang
+  + Header bên trên
+  + Container: Sidebar trái, Content phải
+- Cài đặt react-router-dom: npm i react-router-dom
+  + Tạo src/pages/Home/index.js
+  + Tạo src/pages/Following/index.js
+- Đưa cấu hình router ra ngoài
+  + Tạo src/routes/index.js
+  + Tạo các list publicRoutes và privateRoutes
+  + Vào App.js render các route trong publicRoutes/privateRoutes 
+- Xây dựng cơ chế tải layout
+  + Layout mặc định (layout chính / default layout)
+    - components / Layout / DefaultLayout / index.js
+  + Trong DefaultLayout chỉ tạo header và sidebar vì chúng cố định khi chuyển trang, còn content thì thay đổi nên ko define
+  
