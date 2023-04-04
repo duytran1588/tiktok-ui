@@ -13,4 +13,6 @@
   + Layout mặc định (layout chính / default layout)
     - components / Layout / DefaultLayout / index.js
   + Trong DefaultLayout chỉ tạo header và sidebar vì chúng cố định khi chuyển trang, còn content thì thay đổi nên ko define
-  
+
+- UI Header #2: Dùng tippy để tạo các tooltip drop down khi type vào ô input search
+  npm i @tippyjs/react
