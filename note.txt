@@ -16,3 +16,7 @@
 
 - UI Header #2: Dùng tippy để tạo các tooltip drop down khi type vào ô input search
   npm i @tippyjs/react
+
+- UI Header #3: Phân tích các nút trong tiktok:
+  + Các nút có UI khá giống nhau nên có thể tạo 1 component rồi tái sử dụng
+  + Một nút có thể tuỳ chỉnh là link hay button, nếu là chuyển trang nội bộ thì dùng thẻ Link của react-router-dom, nếu là link ra page khác thì dùng thẻ a.

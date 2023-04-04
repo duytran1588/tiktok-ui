@@ -5,9 +5,10 @@ import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 
 import images from '~/assets/images';
+import { default as AccountItem } from '~/components/AccountItem';
+import Button from '~/components/Button';
 import { Wrapper as WrapperPopper } from '~/components/Popper';
 import styles from './Header.module.scss';
-import { default as AccountItem } from '~/components/AccountItem';
 
 const cs = classNames.bind(styles);
 
@@ -57,7 +58,14 @@ function Header() {
             </Tippy>
           </div>
         </Tippy>
-        <div className={cs('actions')}></div>
+        <div className={cs('actions')}>
+          <Button text onClick={() => console.log('test')}>
+            Upload
+          </Button>
+          <Button primary onClick={() => console.log('test')}>
+            Log in
+          </Button>
+        </div>
       </div>
     </header>
   );
