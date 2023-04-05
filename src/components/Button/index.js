@@ -12,6 +12,9 @@ function Button({
   rounded = false,
   small = false,
   large = false,
+  leftIcon = false,
+  rightIcon = false,
+  className,
   href,
   to,
   children,
@@ -58,6 +61,7 @@ function Button({
      * VD: className = {cx('custom')} => cx('custom') sẽ được lấy làm class
      * 
      */
+    [className]: className,
     primary: primary, //primary (từ props): true thì key primary (tự tạo) sẽ được dùng làm class của element
     outline,
     disabled,
@@ -69,7 +73,9 @@ function Button({
 
   return (
     <Comp className={classes} {...props}>
+      {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
       <span className={cx('title')}>{children}</span>
+      {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
     </Comp>
   );
 }
