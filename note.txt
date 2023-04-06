@@ -36,3 +36,6 @@
    - Nên trong comp Image phải fordward ref của <img/> ra bên ngoài, để Tippy nhận
    - Cách tạo 1 image trên web: Vào placeholder image generator online / https://placeholder.imageonline.co/
    - Cách nén 1 file ảnh: vào link: https://tinypng.com/
+
+- Logic Header #1:
+  + Tách phần search ra làm 1 comp riêng vì để chung với Header khi set State lại thì những phần ko liên quan như logo, Menu Header cũng re-render làm giảm hiệu năng   
