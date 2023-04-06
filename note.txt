@@ -20,3 +20,19 @@
 - UI Header #3: Phân tích các nút trong tiktok:
   + Các nút có UI khá giống nhau nên có thể tạo 1 component rồi tái sử dụng
   + Một nút có thể tuỳ chỉnh là link hay button, nếu là chuyển trang nội bộ thì dùng thẻ Link của react-router-dom, nếu là link ra page khác thì dùng thẻ a.
+
+- UI Header #7: 
+  + Thay font family
+   - Vào page tiktok, vô tab network chọn font, F5 reload lại trang
+   - click phải vào từng font chọn open in new tab để save font lại
+   - Đưa vào src/assets
+   - Vào GlobalStyles.scss, tạo các font-face rồi đưa vào font-family của body
+  + Thay Header icon
+   - Tạo src/components/Icons/index.js
+   - Copy outerHtml svg của tiktok
+   - export component trong index.js 
+  + Tạo component Image
+   - Vì Image nằm trong Tippy mà Typpy chỉ nhận React Element làm children để xác định vị trí của Popper Layout
+   - Nên trong comp Image phải fordward ref của <img/> ra bên ngoài, để Tippy nhận
+   - Cách tạo 1 image trên web: Vào placeholder image generator online / https://placeholder.imageonline.co/
+   - Cách nén 1 file ảnh: vào link: https://tinypng.com/

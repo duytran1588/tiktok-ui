@@ -36,24 +36,26 @@ function Menu({ items = [], children, onChange = () => {} }) {
   return (
     <Tippy
       delay={[0, 700]}
-      offset={[12, 8]}
+      offset={[10, 8]}
       placement="bottom-end"
       interactive
-      render={(attrs) => (
-        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-          <WrapperPopper className={cx('menu-popper')}>
-            {history.length > 1 && (
-              <Header
-                title={current.title}
-                onBack={() => {
-                  setHistory((prev) => prev.slice(0, history.length - 1));
-                }}
-              />
-            )}
-            {menusRender()}
-          </WrapperPopper>
-        </div>
-      )}
+      render={(attrs) => {
+        return (
+          <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+            <WrapperPopper className={cx('menu-popper')}>
+              {history.length > 1 && (
+                <Header
+                  title={current.title}
+                  onBack={() => {
+                    setHistory((prev) => prev.slice(0, history.length - 1));
+                  }}
+                />
+              )}
+              {menusRender()}
+            </WrapperPopper>
+          </div>
+        );
+      }}
       onHide={() => setHistory((prev) => prev.slice(0, 1))}
     >
       {children}
