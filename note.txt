@@ -60,3 +60,11 @@
     - Dùng encodeURIComponent để user nhập các kí tự đặc biệt như '/, &, :, ...' sẽ được mã hoá hết, tránh bị lỗi
     - Mỗi lần gõ kí tự xuất hiện loading, tắt clear button
     - Click vào mỗi item result link đến trang profile
+
+- Logic Header #3:
+  + Fix vấn đề mỗi lần gõ là mỗi lần request. TH gõ rõ tên thì chỉ được request 1 lần cả tên thôi
+    - Dùng debounce: Khi có 1 chuỗi hành động xảy ra liên tục nhưng ta chỉ muốn bắt hành động cuối
+    - Khi người dùng đang gõ liên tục rồi ngừng gõ khoảng 500ms, ta coi đó là lần gõ cuỗi cùng của họ
+    - Custom 1 cái hook gọi là useDebounce
+
+  

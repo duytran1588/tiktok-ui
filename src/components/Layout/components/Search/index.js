@@ -8,6 +8,7 @@ import 'tippy.js/dist/tippy.css';
 import { default as AccountItem } from '~/components/AccountItem';
 import { Loading, SearchIcon } from '~/components/Icons';
 import { Wrapper as WrapperPopper } from '~/components/Popper';
+import { useDebounce } from '~/hooks';
 import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
@@ -17,6 +18,8 @@ function Search() {
   const [searchValue, setSearchValue] = useState('');
   const [showResult, setShowResult] = useState(true);
   const [loading, setLoading] = useState(false);
+
+  const debounced = useDebounce(searchValue, 500);
 
   const inputRef = useRef();
 
@@ -38,7 +41,7 @@ function Search() {
 
     fetch(
       `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?tenKhoaHoc=${encodeURIComponent(
-        searchValue,
+        debounced,
       )}&MaNhom=GP01`,
     )
       .then((res) => res.json())
@@ -50,7 +53,8 @@ function Search() {
         console.log(err);
         setLoading(false);
       });
-  }, [searchValue]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debounced]);
 
   return (
     <HeadlessTippy
