@@ -39,3 +39,24 @@
 
 - Logic Header #1:
   + Tách phần search ra làm 1 comp riêng vì để chung với Header khi set State lại thì những phần ko liên quan như logo, Menu Header cũng re-render làm giảm hiệu năng   
+
+- Logic Header #2:
+  + Review kiến thức: 
+    - Promise
+    - Fetch Api
+    - Restful Api
+    - JSON  
+  + Cấu trúc 1 URL: https://tiktok.fullstack.edu.vn/api/users/search?q=hoaa&type=less
+    - https: Giao thức http sercure
+    - tiktok.fullstack.edu.vn: host name
+    - /api/users/search: path
+    - ?: sau '?' là query parameters (tham số để truy ván dữ liệu)
+    - Query parameters giúp backend biết cần tìm gì trong database để trả ra FE
+    - Query parameters là các cặp key=value và ngăn cách nhau bởi dấu '&' nếu có nhiều parameters
+    - type=less trả về tối đa 5 kết quả, type=more trả về tối đa 10 kết quả thêm key: 'meta' phân trang
+  + Handle search
+    - Mỗi lần gõ kí tự vào input, gọi API, trả data về render ra list search trong Popper
+    - Ô input trống thì ko gọi API, Xoá ô tìm kiếm thì ko show result
+    - Dùng encodeURIComponent để user nhập các kí tự đặc biệt như '/, &, :, ...' sẽ được mã hoá hết, tránh bị lỗi
+    - Mỗi lần gõ kí tự xuất hiện loading, tắt clear button
+    - Click vào mỗi item result link đến trang profile

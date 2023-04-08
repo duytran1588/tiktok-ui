@@ -1,12 +1,12 @@
-import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadlessTippy from '@tippyjs/react/headless';
-import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
+import { useEffect, useRef, useState } from 'react';
 
 import 'tippy.js/dist/tippy.css';
 import { default as AccountItem } from '~/components/AccountItem';
-import { SearchIcon } from '~/components/Icons';
+import { Loading, SearchIcon } from '~/components/Icons';
 import { Wrapper as WrapperPopper } from '~/components/Popper';
 import styles from './Search.module.scss';
 
@@ -16,6 +16,7 @@ function Search() {
   const [searchResult, setSearchResult] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [showResult, setShowResult] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const inputRef = useRef();
 
@@ -29,27 +30,39 @@ function Search() {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([1, 2, 3]);
-    }, 1000);
-  }, []);
+    if (!searchValue.trim()) {
+      setSearchResult([]);
+      return;
+    }
+    setLoading(true);
+
+    fetch(
+      `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?tenKhoaHoc=${encodeURIComponent(
+        searchValue,
+      )}&MaNhom=GP01`,
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        setSearchResult(res);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  }, [searchValue]);
 
   return (
     <HeadlessTippy
-      visible={showResult && searchResult.length ? true : false}
+      visible={showResult && searchResult.length > 0}
       interactive
       render={(attrs) => (
         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
           <WrapperPopper>
             <h4 className={cx('search-title')}>Accounts</h4>
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
+            {searchResult.map((item) => (
+              <AccountItem key={item.maKhoaHoc} data={item} />
+            ))}
           </WrapperPopper>
         </div>
       )}
@@ -64,13 +77,13 @@ function Search() {
           onFocus={() => setShowResult(true)}
         />
 
-        {!!searchValue && (
+        {!!searchValue && !loading && (
           <button className={cx('clear')} onClick={handleClear}>
             <FontAwesomeIcon icon={faCircleXmark} />
           </button>
         )}
 
-        {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
+        {loading && <Loading className={cx('loading')} />}
         <button className={cx('search-btn')}>
           <SearchIcon />
         </button>
