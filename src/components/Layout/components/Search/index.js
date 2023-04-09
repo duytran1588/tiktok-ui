@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
-
 import 'tippy.js/dist/tippy.css';
+
 import { default as AccountItem } from '~/components/AccountItem';
 import { Loading, SearchIcon } from '~/components/Icons';
 import { Wrapper as WrapperPopper } from '~/components/Popper';
 import { useDebounce } from '~/hooks';
+import * as request from '~/utils/request';
 import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
@@ -39,20 +40,23 @@ function Search() {
     }
     setLoading(true);
 
-    fetch(
-      `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?tenKhoaHoc=${encodeURIComponent(
-        debounced,
-      )}&MaNhom=GP01`,
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setSearchResult(res);
+    const fetchApi = async () => {
+      try {
+        const res = await request.get('QuanLyKhoaHoc/LayDanhSachKhoaHoc', {
+          params: {
+            tenKhoaHoc: debounced,
+            MaNhom: 'GP01',
+          },
+        });
+        setSearchResult(res.data);
         setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
+      } catch (err) {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchApi();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debounced]);
 

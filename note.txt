@@ -67,4 +67,16 @@
     - Khi người dùng đang gõ liên tục rồi ngừng gõ khoảng 500ms, ta coi đó là lần gõ cuỗi cùng của họ
     - Custom 1 cái hook gọi là useDebounce
 
-  
+- Sử dụng Axios: (npm i/install axios)
+    + Có 2 cách gọi API: XmlHTTP request vs fetchAPI
+    + Axios dùng XmlHTTP request để gửi API
+    + Axios có support intercept request và response:
+      - intercept nghĩa là đánh chặn, có thể can thiệp trước khi gửi request hoặc trước khi nhận response
+    + Có thể transform request/response data: 
+      - Trước khi gửi request / nhận response có thể transform data (vd: chuyển từ key full_name thành fullName) 
+    + Có thể huỷ request khi nó chưa hoàn thành
+      - Khi người dùng mở 1 chức năng nào đó làm browser gửi api đến server. Tuy nhiên, người dùng lại thoát khỏi chức năng đó trước khi api được gửi xong. Lúc này axios có thể cancel request
+    + Tự động convert data dạng JSON sang javascript data
+      - Đối với fetch, ta phải thêm bước .json() để parse json sang javascript
+      - Axios tự động parse json sang javascript luôn, ko cần ta chuyển đổi  
+    + creating an instance để cấu hình cho nhiều baseUrl (endpoint) khác nhau  
