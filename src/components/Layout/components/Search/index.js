@@ -5,11 +5,12 @@ import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 import 'tippy.js/dist/tippy.css';
 
+import * as searchSevice from '~/apiServices/searchService';
 import { default as AccountItem } from '~/components/AccountItem';
 import { Loading, SearchIcon } from '~/components/Icons';
 import { Wrapper as WrapperPopper } from '~/components/Popper';
 import { useDebounce } from '~/hooks';
-import * as request from '~/utils/request';
+
 import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
@@ -38,21 +39,13 @@ function Search() {
       setSearchResult([]);
       return;
     }
-    setLoading(true);
 
     const fetchApi = async () => {
-      try {
-        const res = await request.get('QuanLyKhoaHoc/LayDanhSachKhoaHoc', {
-          params: {
-            tenKhoaHoc: debounced,
-            MaNhom: 'GP01',
-          },
-        });
-        setSearchResult(res.data);
-        setLoading(false);
-      } catch (err) {
-        setLoading(false);
-      }
+      setLoading(true);
+      console.log(debounced)
+      const result = await searchSevice.search(debounced, 'GP01');
+      setSearchResult(result);
+      setLoading(false);
     };
 
     fetchApi();
