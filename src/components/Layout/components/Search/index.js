@@ -41,9 +41,8 @@ function Search() {
     }
 
     const fetchApi = async () => {
-      setLoading(true);
-      console.log(debounced)
-      const result = await searchSevice.search(debounced, 'GP01');
+      setLoading(true);    
+      const result = await searchSevice.search(debounced);
       setSearchResult(result);
       setLoading(false);
     };
