@@ -5,10 +5,13 @@ import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
 import Header from './Header';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles);
 
-function Menu({ items = [], hideOnClick = false, children, onChange = () => {} }) {
+const defaultFn = () => {};
+
+function Menu({ items = [], hideOnClick = false, children, onChange = defaultFn }) {
   const [history, setHistory] = useState([{ data: items }]);
 
   const current = history[history.length - 1];
@@ -64,4 +67,10 @@ function Menu({ items = [], hideOnClick = false, children, onChange = () => {} }
   );
 }
 
+Menu.propTypes = {
+  items: PropTypes.array,
+  hideOnClick: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  onChange: PropTypes.func,
+};
 export default Menu;

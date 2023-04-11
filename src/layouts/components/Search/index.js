@@ -5,11 +5,11 @@ import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 import 'tippy.js/dist/tippy.css';
 
-import * as searchSevice from '~/services/searchService';
 import { default as AccountItem } from '~/components/AccountItem';
 import { Loading, SearchIcon } from '~/components/Icons';
 import { Wrapper as WrapperPopper } from '~/components/Popper';
 import { useDebounce } from '~/hooks';
+import * as searchSevice from '~/services/searchService';
 
 import styles from './Search.module.scss';
 

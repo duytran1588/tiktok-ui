@@ -1,6 +1,7 @@
 /**
  * Vì Tippy chỉ nhận React Element làm children, nên nếu dùng Image component thì phải truyền ref từ con của nó ra bên ngoài cho Tippy biết để định hình các popper layout
  */
+import PropTypes from 'prop-types';
 import styles from './Image.module.scss';
 import classNames from 'classnames';
 import { forwardRef, useState } from 'react';
@@ -21,4 +22,10 @@ const Image = forwardRef(({ fallback: customFallback = images.noImage, alt, clas
   return <img alt={alt} className={classes} ref={ref} src={fallback || src} {...props} onError={handleError} />;
 });
 
+Image.propTypes = {
+  fallback: PropTypes.string,
+  alt: PropTypes.string,
+  class: PropTypes.string,
+  src: PropTypes.string,
+};
 export default Image;

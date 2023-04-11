@@ -118,3 +118,7 @@
       - Sau khi tạo biến môi trường xong, chạy lại app, có thể truy cập biến môi trương trong process.env  
 
     + extension install code spell checker => kiểm tra lỗi chính tả
+
+- PropTypes: Có sẵn trong project cra (create-react-app) https://www.npmjs.com/package/prop-types
+    + Dùng để check type của Props 
+    + Typescript là ngôn ngữ lập trình khai báo types trong nhiều case khác
