@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 import 'tippy.js/dist/tippy.css';
 
-import * as searchSevice from '~/apiServices/searchService';
+import * as searchSevice from '~/services/searchService';
 import { default as AccountItem } from '~/components/AccountItem';
 import { Loading, SearchIcon } from '~/components/Icons';
 import { Wrapper as WrapperPopper } from '~/components/Popper';

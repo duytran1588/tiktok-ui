@@ -95,3 +95,26 @@
       - Vào https://www.tiktok.com/favicon.ico save icon về public/favicon_1.ico
     + fix warning thư viện Tippy  
       - Bọc thẻ div bên ngoài Tippy của Search Comp     
+
+- Tái cấu trúc và tối ưu code #1
+    + apiServices -> services
+    + src/components/layout -> src/layouts
+    + routes config      
+    + request.js -> httpRequest.js
+
+    + Tạo env file (.env.local, .env.development, .env.staging, .env.production, ...)
+      - Cấu hình cho nhiều mối trường khác nhau: 
+        local / development, 
+        test / staging, 
+        UAT: Sau khi chạy môi trường test /staging xong, test code với real data của production,
+        production,
+
+      - VD: Mỗi môi trường sẽ có baseUrl khác nhau:
+        local / dev: https://elearning0706-dev.cybersoft.edu.vn/api/  
+        test / staging: https://elearning0706-staging.cybersoft.edu.vn/api/
+        UAT: https://elearning0706-uat.cybersoft.edu.vn/api/
+        prod: https://elearning0706-prod.cybersoft.edu.vn/api/
+
+      - Sau khi tạo biến môi trường xong, chạy lại app, có thể truy cập biến môi trương trong process.env  
+
+    + extension install code spell checker => kiểm tra lỗi chính tả

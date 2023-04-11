@@ -1,7 +1,7 @@
-import * as request from '~/utils/request';
+import * as httpRequest from '~/utils/httpRequest';
 
 export const search = async (tenKhoaHoc, maNhom = 'GP01') => {
-  const res = await request.get('QuanLyKhoaHoc/LayDanhSachKhoaHoc', {
+  const res = await httpRequest.get('QuanLyKhoaHoc/LayDanhSachKhoaHoc', {
     params: {
       tenKhoaHoc,
       maNhom,

@@ -22,11 +22,9 @@ import {
 } from '~/components/Icons';
 import Image from '~/components/Image';
 import Menu from '~/components/Popper/Menu';
-import configRoutes from '~/config/routes';
+import config from '~/config';
 import Search from '../Search';
 import styles from './Header.module.scss';
-
-const { home } = configRoutes;
 
 const cx = classNames.bind(styles);
 
@@ -104,7 +102,7 @@ function Header() {
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
-        <Link to={home} className={cx('logo-link')}>
+        <Link to={config.routes.home} className={cx('logo-link')}>
           <img src={images.logo} alt="Tiktok" />
         </Link>
 
