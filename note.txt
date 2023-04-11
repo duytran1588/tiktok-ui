@@ -87,4 +87,11 @@
     + Ko cho nhập kí tự đầu tiên là space trong input
     + Bỏ qua hành vi focus vào ô tìm kiếm khi nhấn submit
     + Không ẩn menu khi click vào avatar
-      
+
+- Hoàn thiện Header #2:
+    + Xử lý thanh cuộn trong menu đa cấp khi có nhiều content
+    + Thêm style overlay cho thanh cuộn body
+    + Sửa title trang và update favicon 
+      - Vào https://www.tiktok.com/favicon.ico save icon về public/favicon_1.ico
+    + fix warning thư viện Tippy  
+      - Bọc thẻ div bên ngoài Tippy của Search Comp     

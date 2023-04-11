@@ -70,42 +70,46 @@ function Search() {
   }, [debounced]);
 
   return (
-    <HeadlessTippy
-      visible={showResult && searchResult.length > 0}
-      interactive
-      render={(attrs) => (
-        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-          <WrapperPopper>
-            <h4 className={cx('search-title')}>Accounts</h4>
-            {searchResult.map((item) => (
-              <AccountItem key={item.maKhoaHoc} data={item} />
-            ))}
-          </WrapperPopper>
-        </div>
-      )}
-      onClickOutside={handleHideResult}
-    >
-      <div className={cx('search')}>
-        <input
-          ref={inputRef}
-          value={searchValue}
-          placeholder="search accounts and videos"
-          onChange={handleChange}
-          onFocus={() => setShowResult(true)}
-        />
-
-        {!!searchValue && !loading && (
-          <button className={cx('clear')} onClick={handleClear}>
-            <FontAwesomeIcon icon={faCircleXmark} />
-          </button>
+    //Using a wrapper <div> tag around the reference element solves
+    //this by creating a new parentNode context.
+    <div>
+      <HeadlessTippy
+        visible={showResult && searchResult.length > 0}
+        interactive
+        render={(attrs) => (
+          <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+            <WrapperPopper>
+              <h4 className={cx('search-title')}>Accounts</h4>
+              {searchResult.map((item) => (
+                <AccountItem key={item.maKhoaHoc} data={item} />
+              ))}
+            </WrapperPopper>
+          </div>
         )}
+        onClickOutside={handleHideResult}
+      >
+        <div className={cx('search')}>
+          <input
+            ref={inputRef}
+            value={searchValue}
+            placeholder="search accounts and videos"
+            onChange={handleChange}
+            onFocus={() => setShowResult(true)}
+          />
 
-        {loading && <Loading className={cx('loading')} />}
-        <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
-          <SearchIcon />
-        </button>
-      </div>
-    </HeadlessTippy>
+          {!!searchValue && !loading && (
+            <button className={cx('clear')} onClick={handleClear}>
+              <FontAwesomeIcon icon={faCircleXmark} />
+            </button>
+          )}
+
+          {loading && <Loading className={cx('loading')} />}
+          <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+            <SearchIcon />
+          </button>
+        </div>
+      </HeadlessTippy>
+    </div>
   );
 }
 
