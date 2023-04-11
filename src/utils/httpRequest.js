@@ -6,8 +6,6 @@ import axios from 'axios';
  * Ta có thể thông qua thuộc tính này để thêm / bớt tính năng thích hợp với từng môi trường
  */
 
-console.log(process.env);
-
 const httpRequest = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
 });
