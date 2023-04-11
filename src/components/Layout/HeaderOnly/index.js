@@ -4,9 +4,9 @@ function HeaderOnly({ children }) {
   return (
     <div>
       <Header />
-      <dv className="container">
+      <div className="container">
         <div className="content">{children}</div>
-      </dv>
+      </div>
     </div>
   );
 }

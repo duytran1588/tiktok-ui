@@ -80,3 +80,11 @@
       - Đối với fetch, ta phải thêm bước .json() để parse json sang javascript
       - Axios tự động parse json sang javascript luôn, ko cần ta chuyển đổi  
     + creating an instance để cấu hình cho nhiều baseUrl (endpoint) khác nhau  
+
+- Hoàn thiện Header #1: 
+    + Link logo về trang chủ
+    + Sửa font ô tìm kiếm
+    + Ko cho nhập kí tự đầu tiên là space trong input
+    + Bỏ qua hành vi focus vào ô tìm kiếm khi nhấn submit
+    + Không ẩn menu khi click vào avatar
+      

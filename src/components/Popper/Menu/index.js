@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function Menu({ items = [], children, onChange = () => {} }) {
+function Menu({ items = [], hideOnClick = false, children, onChange = () => {} }) {
   const [history, setHistory] = useState([{ data: items }]);
 
   const current = history[history.length - 1];
@@ -56,6 +56,7 @@ function Menu({ items = [], children, onChange = () => {} }) {
           </div>
         );
       }}
+      hideOnClick={hideOnClick}
       onHide={() => setHistory((prev) => prev.slice(0, 1))}
     >
       {children}

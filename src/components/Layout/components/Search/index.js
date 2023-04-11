@@ -34,6 +34,14 @@ function Search() {
     setShowResult(false);
   };
 
+  const handleChange = (e) => {
+    const searchValue = e.target.value;
+
+    if (!searchValue.startsWith(' ')) {
+      setSearchValue(searchValue);
+    }
+  };
+
   useEffect(() => {
     if (!searchValue.trim()) {
       setSearchResult([]);
@@ -41,10 +49,19 @@ function Search() {
     }
 
     const fetchApi = async () => {
-      setLoading(true);    
-      const result = await searchSevice.search(debounced);
-      setSearchResult(result);
-      setLoading(false);
+      setLoading(true);
+
+      try {
+        const result = await searchSevice.search(debounced);
+
+        if (result.length) {
+          setSearchResult(result);
+        }
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
     };
 
     fetchApi();
@@ -73,7 +90,7 @@ function Search() {
           ref={inputRef}
           value={searchValue}
           placeholder="search accounts and videos"
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={handleChange}
           onFocus={() => setShowResult(true)}
         />
 
@@ -84,7 +101,7 @@ function Search() {
         )}
 
         {loading && <Loading className={cx('loading')} />}
-        <button className={cx('search-btn')}>
+        <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
           <SearchIcon />
         </button>
       </div>
