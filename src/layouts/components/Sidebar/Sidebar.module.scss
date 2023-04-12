@@ -1,5 +1,11 @@
 .wrapper {
-  flex-basis: 356px;
+  // flex-basis: 224px;
+  width: 224px;
+  max-width: 100%;
   padding: 20px 0 26px 8px;
   margin-left: -18px;
+}
+
+.menu {
+  margin-bottom: 8px;
 }

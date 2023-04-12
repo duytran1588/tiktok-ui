@@ -7,6 +7,7 @@ import Profile from '~/pages/Profile';
 import Search from '~/pages/Search';
 import Upload from '~/pages/Upload';
 import Live from '~/pages/Live';
+import LiveStream from '~/pages/LiveStream';
 
 //Những router ko cần đăng nhập vẫn vào được
 export const publicRoutes = [
@@ -35,6 +36,10 @@ export const publicRoutes = [
   {
     path: config.routes.live,
     component: Live,
+  },
+  {
+    path: config.routes.livestream,
+    component: LiveStream,
   },
 ];
 
