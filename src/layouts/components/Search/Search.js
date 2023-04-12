@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import 'tippy.js/dist/tippy.css';
 
 import AccountItem from '~/components/AccountItem';
-import { Loading, SearchIcon } from '~/components/Icons';
+import { LoadingIcon, SearchIcon } from '~/components/Icons';
 import { Wrapper as WrapperPopper } from '~/components/Popper';
 import { useDebounce } from '~/hooks';
 import * as searchSevice from '~/services/searchService';
@@ -103,7 +103,7 @@ function Search() {
             </button>
           )}
 
-          {loading && <Loading className={cx('loading')} />}
+          {loading && <LoadingIcon className={cx('loading')} />}
           <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
             <SearchIcon />
           </button>
