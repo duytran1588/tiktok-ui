@@ -5,39 +5,37 @@ import AccountItem from './AccountItem';
 
 const cx = classNames.bind(styles);
 
-function SuggestedAccounts({ label }) {
+const courseList = [
+  {
+    maKhoaHoc: 'bc38',
+    tenKhoaHoc: 'Học lập trình web',
+    hinhAnh: 'https://elearning0706.cybersoft.edu.vn/hinhanh/hoc-lap-trinh-web.jpg',
+  },
+  {
+    maKhoaHoc: 'D123',
+    tenKhoaHoc: 'Lap Trinh Full Stack 123',
+    hinhAnh: 'https://elearning0706.cybersoft.edu.vn/hinhanh/lap-trinh-full-stack-123.jpg',
+  },
+  {
+    maKhoaHoc: 'ITEC 2117',
+    tenKhoaHoc: 'Lập Trình C####',
+    hinhAnh: 'https://elearning0706.cybersoft.edu.vn/hinhanh/lap-trinh-c-.jpg',
+  },
+  {
+    maKhoaHoc: 'ITEC2106',
+    tenKhoaHoc: 'JavaScript Cơ Bản Cho Người Mới Bắt Đầu',
+    hinhAnh: 'https://elearning0706.cybersoft.edu.vn/hinhanh/javascript-co-ban-cho-nguoi-moi-bat-dau.png',
+  },
+];
+
+function SuggestedAccounts({ label, disabled = false }) {
   return (
     <div className={cx('wrapper')}>
       <p className={cx('label')}>{label}</p>
-      <AccountItem
-        data={{
-          maKhoaHoc: 'aJava',
-          tenKhoaHoc: 'Lập trình java',
-          hinhAnh: 'https://elearning0706.cybersoft.edu.vn/hinhanh/lap-trinh-java_gp01.png',
-          tick: true,
-        }}
-      />
-      <AccountItem
-        data={{
-          maKhoaHoc: 'aJava',
-          tenKhoaHoc: 'Lập trình java',
-          hinhAnh: 'https://elearning0706.cybersoft.edu.vn/hinhanh/lap-trinh-java_gp01.png',
-        }}
-      />
-      <AccountItem
-        data={{
-          maKhoaHoc: 'aJava',
-          tenKhoaHoc: 'Lập trình java',
-          hinhAnh: 'https://elearning0706.cybersoft.edu.vn/hinhanh/lap-trinh-java_gp01.png',
-        }}
-      />
-      <AccountItem
-        data={{
-          maKhoaHoc: 'aJava',
-          tenKhoaHoc: 'Lập trình java',
-          hinhAnh: 'https://elearning0706.cybersoft.edu.vn/hinhanh/lap-trinh-java_gp01.png',
-        }}
-      />
+
+      {courseList.map((course) => (
+        <AccountItem key={course.maKhoaHoc} data={course} disabled={disabled} />
+      ))}
 
       <p className={cx('more-btn')}>See all</p>
     </div>
@@ -46,6 +44,7 @@ function SuggestedAccounts({ label }) {
 
 SuggestedAccounts.propTypes = {
   label: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
 };
 
 export default SuggestedAccounts;
