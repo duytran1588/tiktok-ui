@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import Image from '~/components/Image';
-import styles from './SuggestedAccounts.module.scss';
+import styles from './AccountList.module.scss';
 import Tippy from '@tippyjs/react/headless';
 import { Wrapper as WrapperPopper } from '~/components/Popper';
 import { Account } from './Account';
@@ -43,19 +43,19 @@ function AccountItem({ data, disabled }) {
   return (
     <Wrapper>
       <Comp {...props}>
-        <NavLink to={`@/${data.maKhoaHoc}/live`} className={cx('account-item')}>
+        <NavLink to={`@/${data.taiKhoan}/live`} className={cx('account-item')}>
           <Image
             className={cx('avatar')}
-            src={data.hinhAnh}
-            alt={data.tenKhoaHoc}
+            src={data.hinhAnh || 'https://bedental.vn/wp-content/uploads/2022/11/hot-girl.jpg'}
+            alt={data.hoTen}
             fallback="https://bedental.vn/wp-content/uploads/2022/11/hot-girl.jpg"
           />
           <div className={cx('item-info')}>
             <h4 className={cx('nickname')}>
-              <span>{data.maKhoaHoc}</span>
+              <span>{data.taiKhoan}</span>
               {data.tick && <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />}
             </h4>
-            <p className={cx('name')}>{data.tenKhoaHoc}</p>
+            <p className={cx('name')}>{data.hoTen}</p>
           </div>
         </NavLink>
       </Comp>

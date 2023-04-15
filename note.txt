@@ -125,3 +125,13 @@
 
 - Tối ưu Header final
     + Button clear đè lên long content khi search trong input    
+
+- Gắn Redux Toolkit:
+    + Add successfully
+    + Dùng redux để chỉnh state bình thường
+    + Dùng redux để thực thi tác vụ async
+
+- createAction: createAction('type', payload = undefined)
+    + Trả về 1 function action
+    + Gọi action: action() trả về {type: 'type', payload: undefined}
+    + Gọi action: action('payload') trả về {type: 'type', payload: 'payload'}
