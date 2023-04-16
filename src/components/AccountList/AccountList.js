@@ -5,11 +5,23 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import AccountItem from './AccountItem';
 import styles from './AccountList.module.scss';
+import { useState } from 'react';
+import { accountList as accountListService } from '~/services/accountListService';
 
 const cx = classNames.bind(styles);
 
 function AccountList({ accountList, label, disabled = false }) {
+  const [seeMoreList, setSeeMoreList] = useState([]);
+  const [currPage, setCurrPage] = useState(2);
+
   const loading = useSelector((state) => state.accountList.loading);
+  const pageSize = 5;
+
+  const handleSeemore = async () => {
+    const res = await accountListService('GP01', currPage, pageSize);
+    setSeeMoreList((prev) => [...prev, ...res.items]);
+    setCurrPage((prev) => prev + 1);
+  };
 
   return (
     <div className={cx('wrapper')}>
@@ -20,7 +32,13 @@ function AccountList({ accountList, label, disabled = false }) {
         <AccountItem key={item.taiKhoan} data={item} disabled={disabled} />
       ))}
 
-      <p className={cx('more-btn')}>See all</p>
+      {seeMoreList?.map((item) => (
+        <AccountItem key={item.taiKhoan} data={item} disabled={disabled} />
+      ))}
+
+      <button onClick={handleSeemore} className={cx('more-btn')}>
+        See all
+      </button>
     </div>
   );
 }
