@@ -19,8 +19,6 @@ function AccountList({ accountList, label, disabled = false }) {
       {accountList?.map((item) => (
         <AccountItem key={item.taiKhoan} data={item} disabled={disabled} />
       ))}
-
-      <p className={cx('more-btn')}>See all</p>
     </div>
   );
 }
