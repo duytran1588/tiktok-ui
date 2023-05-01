@@ -23,6 +23,7 @@ function AccountItem({ data }) {
           {data.tick && <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />}
         </h4>
         <p className={cx('name')}>{data.tenKhoaHoc}</p>
+        <p>Hello</p>
       </div>
     </Link>
   );
